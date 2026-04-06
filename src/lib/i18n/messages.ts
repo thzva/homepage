@@ -89,8 +89,8 @@ const en: LocaleMessages = {
     type: 'Type',
     noResults: 'No publications found matching your criteria.',
     abstract: 'Abstract',
-    bibtex: 'BibTeX',
-    code: 'Code',
+    bibtex: 'arXiv',
+    code: 'Homepage',
   },
   footer: {
     lastUpdated: 'Last updated',

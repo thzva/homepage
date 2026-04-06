@@ -3,9 +3,9 @@ title = "About"
 
 [profile]
 research_interests = [
-  "Computational Physics",
-  "Mathematical Principles",
-  "Proof of Theorems"
+  "Human-AI Interaction",
+  "LLM Personalization",
+  "Computational Social Science"
 ]
 
 [[sections]]
@@ -26,4 +26,3 @@ id = "news"
 type = "list"
 title = "News"
 source = "news.toml"
-

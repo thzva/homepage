@@ -190,7 +190,8 @@ export default function PublicationsList({ config, publications, embedded = fals
                         {messages.publications.noResults}
                     </div>
                 ) : (
-                    filteredPublications.map((pub, index) => (
+                    <>
+                    {filteredPublications.filter(p => p.selected).map((pub, index) => (
                         <motion.div
                             key={pub.id}
                             initial={{ opacity: 0, y: 20 }}
@@ -219,9 +220,12 @@ export default function PublicationsList({ config, publications, embedded = fals
                                     <p className={`${embedded ? "text-sm" : "text-base"} text-neutral-600 dark:text-neutral-400 mb-2`}>
                                         {pub.authors.map((author, idx) => (
                                             <span key={idx}>
-                                                <span className={`${author.isHighlighted ? 'font-semibold text-accent' : ''} ${author.isCoAuthor ? `underline underline-offset-4 ${author.isHighlighted ? 'decoration-accent' : 'decoration-neutral-400'}` : ''}`}>
+                                                <span className={`${author.isHighlighted ? 'font-semibold text-accent' : ''} ${''}`}>
                                                     {author.name}
                                                 </span>
+                                                {author.isCoAuthor && (
+                                                    <sup className={`ml-0 ${author.isHighlighted ? 'text-accent' : 'text-neutral-600 dark:text-neutral-400'}`}>*</sup>
+                                                )}
                                                 {author.isCorresponding && (
                                                     <sup className={`ml-0 ${author.isHighlighted ? 'text-accent' : 'text-neutral-600 dark:text-neutral-400'}`}>†</sup>
                                                 )}
@@ -230,7 +234,7 @@ export default function PublicationsList({ config, publications, embedded = fals
                                         ))}
                                     </p>
                                     <p className="text-sm font-medium text-neutral-800 dark:text-neutral-600 mb-3">
-                                        {pub.journal || pub.conference} {pub.year}
+                                        {pub.journal || pub.conference}
                                     </p>
 
                                     {pub.description && (
@@ -274,19 +278,16 @@ export default function PublicationsList({ config, publications, embedded = fals
                                                 {messages.publications.abstract}
                                             </button>
                                         )}
-                                        {pub.bibtex && (
-                                            <button
-                                                onClick={() => setExpandedBibtexId(expandedBibtexId === pub.id ? null : pub.id)}
-                                                className={cn(
-                                                    "inline-flex items-center px-3 py-1 rounded-md text-xs font-medium transition-colors",
-                                                    expandedBibtexId === pub.id
-                                                        ? "bg-accent text-white"
-                                                        : "bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-accent hover:text-white"
-                                                )}
+                                        {pub.url && (
+                                            <a
+                                                href={pub.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-accent hover:text-white transition-colors"
                                             >
                                                 <BookOpenIcon className="h-3 w-3 mr-1.5" />
                                                 {messages.publications.bibtex}
-                                            </button>
+                                            </a>
                                         )}
                                     </div>
 
@@ -335,7 +336,44 @@ export default function PublicationsList({ config, publications, embedded = fals
                                 </div>
                             </div>
                         </motion.div>
-                    ))
+                    ))}
+                    {filteredPublications.some(p => !p.selected) && (
+                        <h2 className="text-2xl font-serif font-bold text-primary mt-10 mb-2">Past Research</h2>
+                    )}
+                    {filteredPublications.filter(p => !p.selected).map((pub, index) => (
+                        <motion.div
+                            key={pub.id}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.4, delay: 0.1 * index }}
+                            className="bg-white dark:bg-neutral-900 p-6 rounded-xl shadow-sm border border-neutral-200 dark:border-neutral-800 hover:shadow-md transition-all duration-200"
+                        >
+                            <div className="flex flex-col md:flex-row gap-6">
+                                <div className="flex-grow min-w-0">
+                                    <h3 className={`${embedded ? "text-lg" : "text-xl"} font-semibold text-primary mb-2 leading-tight`}>
+                                        {pub.title}
+                                    </h3>
+                                    <p className={`${embedded ? "text-sm" : "text-base"} text-neutral-600 dark:text-neutral-400 mb-2`}>
+                                        {pub.authors.map((author, i) => (
+                                            <span key={i}>
+                                                {i > 0 && ', '}
+                                                <span className={`${author.isHighlighted ? 'font-semibold text-accent' : ''}`}>
+                                                    {author.name}
+                                                </span>
+                                                {author.isCoAuthor && (
+                                                    <sup className={`ml-0 ${author.isHighlighted ? 'text-accent' : 'text-neutral-600 dark:text-neutral-400'}`}>*</sup>
+                                                )}
+                                            </span>
+                                        ))}
+                                    </p>
+                                    <p className="text-sm font-medium text-neutral-800 dark:text-neutral-600 mb-3">
+                                        {pub.journal || pub.conference}
+                                    </p>
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                    </>
                 )}
             </div>
         </motion.div>

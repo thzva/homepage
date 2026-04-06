@@ -24,7 +24,7 @@ export default function News({ items, title }: NewsProps) {
             transition={{ duration: 0.6, delay: 0.5 }}
         >
             <h2 className="text-2xl font-serif font-bold text-primary mb-4">{resolvedTitle}</h2>
-            <div className="space-y-3">
+            <div className="max-h-48 overflow-y-auto space-y-3 pr-2">
                 {items.map((item, index) => (
                     <div key={index} className="flex items-start space-x-3">
                         <span className="text-xs text-neutral-500 mt-1 w-16 flex-shrink-0">{item.date}</span>

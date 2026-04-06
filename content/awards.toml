@@ -3,25 +3,26 @@ title = "Awards"
 description = "Honors and awards I have received."
 
 [[items]]
-title = "Example Award"
-subtitle = "Organization"
-date = "2025"
-content = "Description of the award."
+title = "Blue Bridge Cup JAVA — Provincial First Prize & National Excellent Award"
+subtitle = "11th Blue Bridge Cup Software Development Competition"
+date = "2021"
 
 [[items]]
-title = "Example Award"
-subtitle = "Organization"
-date = "2024"
-content = "Description of the award."
+title = "Internet+ — University First Prize & Provincial Third Prize"
+subtitle = "6th College Student Innovation and Entrepreneurship Competition"
+date = "2020"
 
 [[items]]
-title = "Example Award"
-subtitle = "Organization"
-date = "2023"
-content = "Description of the award."
+title = "Merit Student of Jiangsu Province"
+subtitle = "Jiangsu Province"
+date = "2019"
 
 [[items]]
-title = "Example Award"
-subtitle = "Organization"
-date = "2022"
-content = "Description of the award."
+title = "National Scholarship"
+subtitle = "Ministry of Education, China"
+date = "2018"
+
+[[items]]
+title = "First Class Scholarship & Merit Student (Three Consecutive Years)"
+subtitle = "Changzhou Vocational Institute of Engineering"
+date = "2016 - 2019"

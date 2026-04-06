@@ -1,5 +1,3 @@
-I am a PhD student at the School of Science, University of Example, advised by [Prof. Advisor One](https://example.com) and [Dr. Advisor Two](https://example.com).
+I am a Ph.D. student in the [Augment Research Group](https://wms.cs.kuleuven.be/cs/onderzoek/augment) at the Department of Computer Science, KU Leuven, supervised by [Prof. Katrien Verbert](https://wms.cs.kuleuven.be/cs/onderzoek/augment/katrien-verbert) and [Dr. Yucheng Jin](https://yucheng.gold/). I also work closely with [Dr. Zhen Wang](https://zhenwang9102.github.io/).
 
-Prior to this, I obtained a BSc degree with First Class Honours in Natural Science from the University of Example.
-
-My current research focuses on investigating the mathematical principles of natural philosophy.
+My research focuses on LLM personalization, with a particular interest in the interaction between users and models, as well as how algorithm design can support adaptation to individual differences. More broadly, I am interested in building large language models that interact with users in more transparent and controllable ways.
