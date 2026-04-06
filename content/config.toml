@@ -1,14 +1,14 @@
 [site]
 title = "Yufan Zhou"
 description = "PhD Student at KU Leuven"
-favicon = "/favicon.svg"
+favicon = "/homepage/favicon.svg"
 last_updated = "April 6, 2026"
 
 [author]
 name = "Yufan Zhou"
 title = "PhD Student"
 institution = "KU Leuven"
-avatar = "/bio.jpg"
+avatar = "/homepage/bio.jpg"
 
 [social]
 email = "yufan.zhou@kuleuven.be"
