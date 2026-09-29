@@ -108,7 +108,11 @@ export default function PublicationsList({ config, publications, embedded = fals
                 )}
                 <div className="flex-grow">
                     <h3 className={`${embedded ? "text-lg" : "text-xl"} font-semibold text-primary mb-2 leading-tight`}>
-                        {pub.title}
+                        {pub.url ? (
+                            <a href={pub.url} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+                                {pub.title}
+                            </a>
+                        ) : pub.title}
                     </h3>
                     <p className={`${embedded ? "text-sm" : "text-base"} text-neutral-600 dark:text-neutral-400 mb-2`}>
                         {pub.authors.map((author, idx) => (
@@ -217,7 +221,11 @@ export default function PublicationsList({ config, publications, embedded = fals
             <div className="flex flex-col md:flex-row gap-6">
                 <div className="flex-grow min-w-0">
                     <h3 className={`${embedded ? "text-lg" : "text-xl"} font-semibold text-primary mb-2 leading-tight`}>
-                        {pub.title}
+                        {pub.url ? (
+                            <a href={pub.url} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+                                {pub.title}
+                            </a>
+                        ) : pub.title}
                     </h3>
                     <p className={`${embedded ? "text-sm" : "text-base"} text-neutral-600 dark:text-neutral-400 mb-2`}>
                         {pub.authors.map((author, i) => (
