@@ -58,6 +58,7 @@ export function parseBibTeX(bibtexContent: string, locale?: string): Publication
 
     // Parse selected field (convert string to boolean)
     const selected = tags.selected === 'true' || tags.selected === 'yes';
+    const past = tags.past === 'true' || tags.past === 'yes';
 
     // Parse preview field (remove braces if present)
     const preview = tags.preview?.replace(/[{}]/g, '');
@@ -89,10 +90,11 @@ export function parseBibTeX(bibtexContent: string, locale?: string): Publication
       abstract: cleanBibTeXString(tags.abstract),
       description: cleanBibTeXString(tags.description || tags.note),
       selected,
+      past,
       preview,
 
       // Store original BibTeX (excluding custom fields)
-      bibtex: reconstructBibTeX(entry, ['selected', 'preview', 'description', 'keywords', 'code', 'project', 'dataset']),
+      bibtex: reconstructBibTeX(entry, ['selected', 'past', 'preview', 'description', 'keywords', 'code', 'project', 'dataset']),
     };
 
     // Clean up undefined fields

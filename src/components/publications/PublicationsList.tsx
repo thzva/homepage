@@ -186,9 +186,17 @@ export default function PublicationsList({ config, publications, embedded = fals
                         {messages.publications.noResults}
                     </div>
                 ) : (
-                    filteredPublications.map((pub, index) => (
-                        <PublicationCard key={pub.id} pub={pub} index={index} embedded={embedded} />
-                    ))
+                    <>
+                        {filteredPublications.filter(pub => !pub.past).map((pub, index) => (
+                            <PublicationCard key={pub.id} pub={pub} index={index} embedded={embedded} />
+                        ))}
+                        {filteredPublications.some(pub => pub.past) && (
+                            <h2 className="text-2xl font-serif font-bold text-primary mt-10 mb-2">Past Research</h2>
+                        )}
+                        {filteredPublications.filter(pub => pub.past).map((pub, index) => (
+                            <PublicationCard key={pub.id} pub={pub} index={index} embedded={embedded} />
+                        ))}
+                    </>
                 )}
             </div>
         </motion.div>

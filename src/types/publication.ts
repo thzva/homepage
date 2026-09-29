@@ -43,6 +43,7 @@ export interface Publication {
   awards?: string[];
   featured?: boolean;
   selected?: boolean;
+  past?: boolean;
   preview?: string;
   summary?: string;
   researchArea: ResearchArea;

@@ -42,14 +42,14 @@ export default function PublicationCard({ pub, index, embedded = false }: Public
                     </div>
                 )}
                 <div className="flex-grow">
-                    <h3 className={`${embedded ? "text-lg" : "text-xl"} font-semibold text-primary mb-2 leading-tight`}>
+                    <h3 className={`${embedded ? "text-base" : "text-lg"} font-semibold text-primary mb-2 leading-tight`}>
                         {pub.url ? (
                             <a href={pub.url} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
                                 {pub.title}
                             </a>
                         ) : pub.title}
                     </h3>
-                    <p className={`${embedded ? "text-sm" : "text-base"} text-neutral-600 dark:text-neutral-400 mb-2`}>
+                    <p className={`${embedded ? "text-xs" : "text-sm"} text-neutral-600 dark:text-neutral-400 mb-2`}>
                         {pub.authors.map((author, idx) => (
                             <span key={idx}>
                                 <span className={`${author.isHighlighted ? 'font-semibold text-accent' : ''} ${''}`}>
@@ -65,7 +65,7 @@ export default function PublicationCard({ pub, index, embedded = false }: Public
                             </span>
                         ))}
                     </p>
-                    <p className="text-sm font-medium text-neutral-800 dark:text-neutral-600 mb-3">
+                    <p className="text-xs font-medium text-neutral-800 dark:text-neutral-600 mb-3">
                         {pub.journal || pub.conference}
                     </p>
 
