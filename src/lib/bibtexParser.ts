@@ -88,9 +88,10 @@ export function parseBibTeX(bibtexContent: string, locale?: string): Publication
       description: cleanBibTeXString(tags.description || tags.note),
       selected,
       preview,
+      category: cleanBibTeXString(tags.category),
 
       // Store original BibTeX (excluding custom fields)
-      bibtex: reconstructBibTeX(entry, ['selected', 'preview', 'description', 'keywords', 'code']),
+      bibtex: reconstructBibTeX(entry, ['selected', 'preview', 'description', 'keywords', 'code', 'category']),
     };
 
     // Clean up undefined fields
