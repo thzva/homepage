@@ -27,6 +27,8 @@ export interface Publication {
   pmid?: string;
   url?: string;
   code?: string;
+  project?: string;
+  dataset?: string;
   pdfUrl?: string;
   tags: string[];
   keywords?: string[];
@@ -42,7 +44,6 @@ export interface Publication {
   featured?: boolean;
   selected?: boolean;
   preview?: string;
-  category?: string;
   summary?: string;
   researchArea: ResearchArea;
   description?: string;

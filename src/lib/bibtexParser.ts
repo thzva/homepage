@@ -76,7 +76,7 @@ export function parseBibTeX(bibtexContent: string, locale?: string): Publication
       researchArea: detectResearchArea(tags.title, keywords),
 
       // Optional fields
-      journal: cleanBibTeXString(tags.journal),
+      journal: formatArxivVenue(cleanBibTeXString(tags.journal), year, month),
       conference: cleanBibTeXString(tags.booktitle),
       volume: tags.volume,
       issue: tags.number,
@@ -84,14 +84,15 @@ export function parseBibTeX(bibtexContent: string, locale?: string): Publication
       doi: tags.doi,
       url: tags.url,
       code: tags.code,
+      project: tags.project,
+      dataset: tags.dataset,
       abstract: cleanBibTeXString(tags.abstract),
       description: cleanBibTeXString(tags.description || tags.note),
       selected,
       preview,
-      category: cleanBibTeXString(tags.category),
 
       // Store original BibTeX (excluding custom fields)
-      bibtex: reconstructBibTeX(entry, ['selected', 'preview', 'description', 'keywords', 'code', 'category']),
+      bibtex: reconstructBibTeX(entry, ['selected', 'preview', 'description', 'keywords', 'code', 'project', 'dataset']),
     };
 
     // Clean up undefined fields
@@ -227,6 +228,15 @@ function parseAuthors(authorsStr: string, highlightNames: string[]): Array<{ nam
     })
     .filter(author => author.name);
 }
+
+// Append the date to arXiv preprints, e.g. "arXiv, Sep 2026"
+function formatArxivVenue(venue: string, year: number, month?: number): string {
+  if (venue.toLowerCase() !== 'arxiv') return venue;
+  const monthName = month ? MONTH_ABBREVIATIONS[month - 1] + ' ' : '';
+  return `arXiv, ${monthName}${year}`;
+}
+
+const MONTH_ABBREVIATIONS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 function cleanBibTeXString(str?: string): string {
   if (!str) return '';
