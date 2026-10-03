@@ -85,12 +85,16 @@ export default function CardPage({ config, embedded = false }: { config: CardPag
                                             </a>
                                         ) : item.title}
                                     </h3>
-                                    {item.date && (
+                                    {item.date && !item.image && (
                                         <span className="text-sm text-neutral-500 font-medium bg-neutral-100 dark:bg-neutral-800 px-2 py-1 rounded">
                                             {item.date}
                                         </span>
                                     )}
                                 </div>
+                                {/* Cards with a preview image show the date under the title */}
+                                {item.date && item.image && (
+                                    <p className="text-sm text-neutral-500 mb-3">{item.date}</p>
+                                )}
                                 {item.subtitle && (
                                     <p className={`${embedded ? "text-sm" : "text-base"} text-accent font-medium mb-3`}>{item.subtitle}</p>
                                 )}
